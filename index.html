@@ -264,78 +264,101 @@
             text-align: center;
         }
 
-        .plate-container {
-            perspective: 1000px;
-            margin-bottom: 40px;
-        }
+       .plate-container {
+    perspective: 1000px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+}
 
         .plate-preview {
-            width: 450px;
-            height: 150px;
-            background: linear-gradient(145deg, #f8f8f8, #e0e0e0);
-            border: 3px solid #1a4a7a;
-            border-radius: 15px;
-            position: relative;
-            box-shadow: 
-                0 20px 40px rgba(0,0,0,0.3),
-                inset 0 2px 5px rgba(255,255,255,0.5),
-                inset 0 -2px 5px rgba(0,0,0,0.1);
-            transform-style: preserve-3d;
-            transition: transform 0.6s ease;
-            cursor: move;
-        }
+    width: 450px;
+    height: 150px;
+    background: linear-gradient(145deg, #f8f8f8, #e0e0e0);
+    border: 3px solid #000000;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.3),
+        inset 0 2px 5px rgba(255,255,255,0.5),
+        inset 0 -2px 5px rgba(0,0,0,0.1);
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    cursor: move;
+    transform-origin: center center;
+}
 
         .plate-preview:hover {
             transform: rotateY(10deg) rotateX(-5deg);
         }
 
         .mercosul-band {
-            background: linear-gradient(135deg, #1a4a7a 0%, #2d5aa0 50%, #1a4a7a 100%);
-            color: white;
-            width: 100%;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-weight: bold;
-            font-size: 12px;
-            letter-spacing: 2px;
-            padding: 0 20px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
+    background: linear-gradient(135deg, #1a4a7a 0%, #2d5aa0 50%, #1a4a7a 100%);
+    color: rgb(255, 255, 255);
+    width: 100%;
+    height: 26.67%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8em;
+    letter-spacing: 0.133em;
+    padding: 0 1.33%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 2;
+}
 
+        .mercosul-logo {
+    height: 55%;
+    margin-right: 0.667em;
+    margin-left: -1em;
+    display: block;
+}
+
+        /* CORREÇÃO PRINCIPAL: Container para área branca */
         .plate-content {
-            height: 110px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
+    position: absolute;
+    top: 26.67%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 73.33%;
+    overflow: hidden;
+}
 
         .plate-text {
-            font-family: 'FE-FONT', 'Arial Black', sans-serif;
-            font-size: 48px;
-            font-weight: 900;
-            text-align: center;
-            letter-spacing: 4px;
-            position: absolute;
-            transition: all 0.3s ease;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
+    font-family: 'FE-FONT', 'Arial Black', sans-serif;
+    font-size: 2.8em;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 0.095em;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
 
         .plate-emoji {
-            font-size: 40px;
-            position: absolute;
-            transition: all 0.3s ease;
-            animation: emojiFloat 3s ease-in-out infinite;
-        }
+    font-size: 2.67em;
+    position: absolute;
+    transition: all 0.3s ease;
+    animation: emojiFloat 3s ease-in-out infinite;
+    transform: translate(-50%, -50%);
+}
 
         @keyframes emojiFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-5px) rotate(10deg); }
+            0%, 100% { transform: translate(-50%, -50%) translateY(0) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) translateY(-5px) rotate(10deg); }
         }
 
         .price-section {
@@ -403,18 +426,39 @@
             gap: 10px;
         }
 
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 20px;
-            border: 2px solid rgba(255,255,255,0.1);
-            border-radius: 15px;
-            background: rgba(255,255,255,0.05);
-            color: white;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
+        .form-group input {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    background: rgba(255,255,255,0.05);
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.form-group select {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    background: rgba(255,255,255,0.9) !important;
+    color: #333 !important;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+.form-group select option {
+    background: #2a2a2a !important;
+    color: white !important;
+    padding: 10px;
+}
+
+.form-group select {
+    background: rgba(255,255,255,0.1) !important;
+    color: white !important;
+}
 
         .form-group input:focus,
         .form-group select:focus {
@@ -619,43 +663,60 @@
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .plate-preview {
-                width: 380px;
-                height: 125px;
-            }
+        @media (max-width: 500px) {
+    .plate-container {
+        transform: scale(0.7);
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .plate-container {
+        transform: scale(0.6);
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 350px) {
+    .plate-container {
+        transform: scale(0.55);
+        margin-bottom: 5px;
+    }
+}
+
+
+        #countryText {
+            flex: 1;
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+            letter-spacing: 2px;
+            margin-top: 6px;
         }
 
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .plate-preview {
-                width: 320px;
-                height: 105px;
-            }
-            
-            .plate-text {
-                font-size: 36px;
-            }
-            
-            .emoji-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .step-navigation {
-                flex-direction: column;
-            }
+        .brasil-flag {
+    height: 47.5%;
+    margin-left: 0.667em;
+    margin-right: -0.667em;
+    display: block;
+}
 
-            .progress-bar {
-                flex-wrap: wrap;
-                gap: 20px;
-            }
+        .qrcode-logo {
+            position: absolute;
+            left: 3px;
+            bottom: 50px;
+            height: 26px;
+            margin: 0;
+            z-index: 2;
+        }
+
+        .br-logo {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            height: 18px;
+            margin: 0;
+            z-index: 2;
         }
     </style>
 </head>
@@ -670,7 +731,7 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <h1>✨ Criador de Chaveiros Premium</h1>
+            <h1>🎯 Criador de Chaveiros Premium</h1>
             <p>Personalize seu chaveiro em poucos passos simples</p>
         </header>
 
@@ -704,20 +765,17 @@
                 <div class="plate-container">
                     <div class="plate-preview" id="platePreview">
                         <div class="mercosul-band" id="mercosulBand">
-                            <div class="mercosul-left">MERCOSUL</div>
+                            <img src="imagens/mercosul-logo.png" alt="Mercosul" class="mercosul-logo">
                             <div class="mercosul-center" id="countryText">BRASIL</div>
-                            <div class="mercosul-right">🇧🇷</div>
+                            <img src="imagens/brasil-flag.png" alt="Bandeira do Brasil" class="brasil-flag">
                         </div>
                         <div class="plate-content">
-                            <div class="plate-text" id="plateText">ABC1234</div>
+                            <div class="plate-text" id="plateText">Seu Nome</div>
                             <div class="plate-emoji" id="plateEmoji"></div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="price-section">
-                    <div class="price">R$ 14,90</div>
-                    <p style="color: rgba(255,255,255,0.9);">🚚 Frete Grátis | ⚡ Entrega Expressa</p>
+            
                 </div>
             </div>
 
@@ -731,17 +789,9 @@
                     </div>
                     <div class="form-group">
                         <label>✏️ Digite seu texto personalizado:</label>
-                        <input type="text" id="plateTextInput" maxlength="16" placeholder="Ex: ABC1234, MEUCAR, LOVE2024..." value="ABC1234">
+                        <input type="text" id="plateTextInput" maxlength="16" placeholder="Ex: Seu Nome, MEUCAR, LOVE2024..." value="Seu Nome">
                     </div>
-                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin-top: 20px;">
-                        <h4 style="color: white; margin-bottom: 15px;">💡 Sugestões Populares:</h4>
-                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                            <button class="emoji-btn" onclick="setSuggestion('FAMILIA')" style="width: auto; padding: 10px 15px; font-size: 14px;">FAMILIA</button>
-                            <button class="emoji-btn" onclick="setSuggestion('LOVE2024')" style="width: auto; padding: 10px 15px; font-size: 14px;">LOVE2024</button>
-                            <button class="emoji-btn" onclick="setSuggestion('BRASIL')" style="width: auto; padding: 10px 15px; font-size: 14px;">BRASIL</button>
-                            <button class="emoji-btn" onclick="setSuggestion('MEUCAR')" style="width: auto; padding: 10px 15px; font-size: 14px;">MEUCAR</button>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <!-- Step 2: Country Text -->
@@ -781,11 +831,13 @@
                     <div class="form-group">
                         <label>📏 Tamanho da fonte:</label>
                         <select id="fontSize">
-                            <option value="32">Pequeno (32px)</option>
-                            <option value="42">Médio (42px)</option>
-                            <option value="48" selected>Grande (48px)</option>
-                            <option value="56">Extra Grande (56px)</option>
-                        </select>
+    <option value="1.87em">Tamanho 1</option>
+    <option value="2.33em">Tamanho 2</option>
+    <option value="2.8em" selected>Tamanho 3</option>
+    <option value="3.2em">Tamanho 4</option>
+    <option value="3.67em">Tamanho 5</option>
+    <option value="4.13em">Tamanho 6</option>
+</select>
                     </div>
                     <div class="form-group">
                         <label>✍️ Estilo da fonte:</label>
@@ -881,7 +933,7 @@
                     <div id="finalReview" style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; color: white;">
                         <h4 style="margin-bottom: 20px; color: var(--primary);">📋 Resumo do Pedido:</h4>
                         <div style="display: grid; gap: 10px;">
-                            <div><strong>Texto principal:</strong> <span id="reviewText">ABC1234</span></div>
+                            <div><strong>Texto principal:</strong> <span id="reviewText">Seu Nome</span></div>
                             <div><strong>Texto da barra:</strong> <span id="reviewCountry">BRASIL</span></div>
                             <div><strong>Cor do texto:</strong> <span id="reviewTextColor">#000000</span></div>
                             <div><strong>Cor da barra:</strong> <span id="reviewBarColor">#1a4a7a</span></div>
@@ -1059,7 +1111,7 @@
         }
 
         function updatePreview() {
-            const text = document.getElementById('plateTextInput').value || 'ABC1234';
+            const text = document.getElementById('plateTextInput').value || 'Seu Nome';
             const countryText = document.getElementById('countryTextInput').value || 'BRASIL';
             const textColor = document.getElementById('textColor').value;
             const barColor = document.getElementById('barColor').value;
@@ -1073,7 +1125,7 @@
 
             plateText.textContent = text;
             plateText.style.color = textColor;
-            plateText.style.fontSize = fontSize + 'px';
+            plateText.style.fontSize = fontSize;
             plateText.style.fontFamily = fontFamily;
 
             // Apply text position
@@ -1124,15 +1176,16 @@
         function applyTextPosition() {
             const plateText = document.getElementById('plateText');
             
+            // CORREÇÃO: Posições ajustadas para área branca apenas
             switch(selectedTextPosition) {
                 case 'up-left':
-                    textPosition = { x: 25, y: 35 };
+                    textPosition = { x: 25, y: 25 };
                     break;
                 case 'up':
-                    textPosition = { x: 50, y: 35 };
+                    textPosition = { x: 50, y: 25 };
                     break;
                 case 'up-right':
-                    textPosition = { x: 75, y: 35 };
+                    textPosition = { x: 75, y: 25 };
                     break;
                 case 'left':
                     textPosition = { x: 25, y: 50 };
@@ -1144,19 +1197,18 @@
                     textPosition = { x: 75, y: 50 };
                     break;
                 case 'down-left':
-                    textPosition = { x: 25, y: 65 };
+                    textPosition = { x: 25, y: 75 };
                     break;
                 case 'down':
-                    textPosition = { x: 50, y: 65 };
+                    textPosition = { x: 50, y: 75 };
                     break;
                 case 'down-right':
-                    textPosition = { x: 75, y: 65 };
+                    textPosition = { x: 75, y: 75 };
                     break;
             }
             
             plateText.style.left = textPosition.x + '%';
             plateText.style.top = textPosition.y + '%';
-            plateText.style.transform = 'translate(-50%, -50%)';
         }
 
         function showEmojiCategory(category) {
@@ -1190,7 +1242,7 @@
             document.querySelectorAll('.emoji-btn').forEach(btn => {
                 btn.classList.remove('selected');
             });
-            if (emoji) {
+            if (emoji && event && event.target) {
                 event.target.classList.add('selected');
             }
             
@@ -1212,39 +1264,39 @@
         function applyEmojiPosition() {
             const plateEmoji = document.getElementById('plateEmoji');
             
+            // CORREÇÃO: Posições ajustadas para área branca apenas
             switch(selectedEmojiPosition) {
                 case 'up-left':
-                    emojiPosition = { x: 20, y: 25 };
+                    emojiPosition = { x: 15, y: 20 };
                     break;
                 case 'up':
-                    emojiPosition = { x: 50, y: 25 };
+                    emojiPosition = { x: 50, y: 20 };
                     break;
                 case 'up-right':
-                    emojiPosition = { x: 80, y: 25 };
+                    emojiPosition = { x: 85, y: 20 };
                     break;
                 case 'left':
-                    emojiPosition = { x: 20, y: 50 };
+                    emojiPosition = { x: 15, y: 50 };
                     break;
                 case 'center':
                     emojiPosition = { x: 50, y: 50 };
                     break;
                 case 'right':
-                    emojiPosition = { x: 80, y: 50 };
+                    emojiPosition = { x: 85, y: 50 };
                     break;
                 case 'down-left':
-                    emojiPosition = { x: 20, y: 75 };
+                    emojiPosition = { x: 15, y: 80 };
                     break;
                 case 'down':
-                    emojiPosition = { x: 50, y: 75 };
+                    emojiPosition = { x: 50, y: 80 };
                     break;
                 case 'down-right':
-                    emojiPosition = { x: 80, y: 75 };
+                    emojiPosition = { x: 85, y: 80 };
                     break;
             }
             
             plateEmoji.style.left = emojiPosition.x + '%';
             plateEmoji.style.top = emojiPosition.y + '%';
-            plateEmoji.style.transform = 'translate(-50%, -50%)';
         }
 
         function updateFinalReview() {
